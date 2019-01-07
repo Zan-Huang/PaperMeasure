@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  <link rel="stylesheet" href="{% static 'classifier/style.css' + ?v=1.112' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'classifier/skeleton.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'classifier/normalize.css' %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Raleway" rel="stylesheet">
+  </head>
+  <body>
+  	<div class="title">
+  		<img id="logo" src="{% static 'classifier/images/hat.png' %}">
+  		<h1> The Milton Academy Sorting Hat </h1>
+
+  	</div>
+  	<div class="bulk">
+  		<h1> About this Project: </h1>
+  		<p>Created by Charlotte Moremen, Alex Rodriguez, and Zan Huang, this project uses machine learning to match your writing with your peers at both Milton Academy publications. If you paste in a sample article you have written into the text area below, the sorting hat will assign you to the Milton publication which your writing style matches most. The machine learning analyzes a combination of grammar and vocabulary to find the best fit. The algorithm can currently assign writers to these publications with <b style="color:#CD5701"><i>86%</i></b> accuracy. Best of luck in the sorting ceremony!
+  		<br>
+  		<form method="post">{% csrf_token %}
+  			<textarea style="height:200px" class="inputBody" name="article" ></textarea>
+  			<br>
+  			<input style="border-color: #1E3964;
+			color: #1E3964;"type="submit" value="Sort">
+  		</form>
+  		<h1 style="border-bottom: 0px;">{{article}}</h1>
+  	</div>
+  </body>
+</html>
